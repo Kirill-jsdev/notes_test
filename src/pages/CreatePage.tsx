@@ -47,7 +47,7 @@ const CreatePage = () => {
         
     }
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const content = e.target.value
         setText(content)
     }
@@ -59,7 +59,7 @@ const CreatePage = () => {
 
                 <div className="mb-4">
                     <label htmlFor="text-area" className="block text-gray-700 font-bold mb-2">Text Area:</label>
-                    <textarea ref={textareaRef} onChange={handleOnChange} id="text-area" name="text-area" className="w-full p-2 border rounded-lg h-40"></textarea>
+                    <textarea ref={textareaRef} onChange={handleChange} id="text-area" name="text-area" className="w-full p-2 border rounded-lg h-40"></textarea>
                 </div>
 
                 <div className="text-center">

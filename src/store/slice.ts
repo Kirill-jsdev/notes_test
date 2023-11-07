@@ -46,10 +46,15 @@ export const notebooksSlice = createSlice({
             state.notebooks[index] = action.payload
             return state
         },
+        editNote: (state, action) => {
+            const index = state.notebooks.findIndex((element) => element.id == action.payload.id);
+            state.notebooks[index] = action.payload
+            return state
+        }
 
     }
 })
 
-export const {createNotebook, deleteNotebook, deleteNote, createNote} = notebooksSlice.actions
+export const {createNotebook, deleteNotebook, deleteNote, createNote, editNote} = notebooksSlice.actions
 
 export default notebooksSlice.reducer

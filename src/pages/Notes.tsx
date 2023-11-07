@@ -40,7 +40,7 @@ const NotesPage = () => {
                 <div key={note.id} className="border p-4 hover:bg-gray-100 rounded-lg flex justify-between">
                   <p className="flex-grow text-lg font-semibold mb-2">{note.title}</p>
                   <div className="flex items-center space-x-2">
-                    <button onClick={() => navigate(`/edit/${note.id}`)} className="text-blue-500">
+                    <button onClick={() => navigate(`/edit/${notebookId}/${note.id}`)} className="text-blue-500">
                       Edit
                     </button>
                     <button onClick={() => removeNote(note.id)} className="text-red-500">
