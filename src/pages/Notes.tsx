@@ -28,9 +28,7 @@ const NotesPage = () => {
         dispatch(deleteNote(updatedNotebook))
       }
     }
-
     
-
     return (
         <div className="max-w-screen-xl mx-auto p-4">
 
@@ -53,11 +51,6 @@ const NotesPage = () => {
                 </div>
               )
             })}
-
-            
-            
-
-            
 
           </div>
 

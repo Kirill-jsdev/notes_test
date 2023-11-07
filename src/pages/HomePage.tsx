@@ -18,13 +18,13 @@ const HomePage = () => {
 
     const dispatch = useDispatch()
 
-    const removeNotebook = (e, notebookId) => {
+    const removeNotebook = (e: React.MouseEvent<HTMLElement>, notebookId: string) => {
         e.stopPropagation()
         e.preventDefault()
         dispatch(deleteNotebook(notebookId))
     }
 
-    const addNotebook = (e) => {
+    const addNotebook = (e: React.MouseEvent<HTMLElement>) => {
         e.stopPropagation()
         e.preventDefault()
         if (inputRef.current) {

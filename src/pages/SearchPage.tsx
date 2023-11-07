@@ -17,10 +17,10 @@ const SearchPage = () => {
 
     const notebooks = useSelector(state => state.notebooks.notebooks)
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value
 
-        if(!term.length === 0) {
+        if(!term.length) {
             setFilteredNotes(notes)
             return
         }
