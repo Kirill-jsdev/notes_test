@@ -1,11 +1,15 @@
 import {useState, useEffect, useRef} from 'react'
 import {useSelector} from 'react-redux'
+import { RootState } from '../store/store'
+import { Note } from '../types/types'
+
+type FilterBy = 'title' | 'content'
 
 const SearchPage = () => {
 
-    const [notes, setNotes] = useState([])
-    const [filteredNotes, setFilteredNotes] = useState([])
-    const [filterBy, setFilterBy] = useState('title')
+    const [notes, setNotes] = useState<Note[]>([])
+    const [filteredNotes, setFilteredNotes] = useState<Note[]>([])
+    const [filterBy, setFilterBy] = useState<FilterBy>('title')
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
@@ -29,7 +33,7 @@ const SearchPage = () => {
     }, [])
 
 
-    const notebooks = useSelector(state => state.notebooks.notebooks)
+    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value.toLowerCase()
@@ -44,7 +48,7 @@ const SearchPage = () => {
     }
 
     const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setFilterBy(e.target.value)
+        setFilterBy(e.target.value as FilterBy)
     }
 
     return (
