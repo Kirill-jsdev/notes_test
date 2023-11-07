@@ -8,11 +8,13 @@ const initialState = {
             notes: [ 
                 {
                     id: '01',
-                    title: "Do some stuff at 10 am"
+                    title: "Do some stuff at 10 am",
+                    content: 'Onsectetur adipiscing elit, sed do eiusmod '
                 }, 
                 {
                     id: '02',
-                    title: "Do something again"
+                    title: "Do something again",
+                    content: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...'
                 }, 
           ]  
         }

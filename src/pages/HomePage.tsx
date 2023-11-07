@@ -31,6 +31,7 @@ const HomePage = () => {
             if (!inputRef.current.value) return 
 
             dispatch(createNotebook(inputRef.current.value))
+            inputRef.current.value = ''
         }
     }
 
