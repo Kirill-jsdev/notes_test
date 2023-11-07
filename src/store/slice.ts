@@ -23,10 +23,10 @@ export const notebooksSlice = createSlice({
     name: 'notebooks',
     initialState,
     reducers: {
-        createNotebook: (state) => {
+        createNotebook: (state, action) => {
             state.notebooks.push({
                 id: Math.random(), 
-                name: 'New Notebook', 
+                name: action.payload, 
                 notes: []
             })
         },
@@ -37,17 +37,17 @@ export const notebooksSlice = createSlice({
             }
         },
         deleteNote: (state, action) => {
-            const index = state.notebooks.findIndex((element) => element.id == action.payload.id);
+            const index = state.notebooks.findIndex((element) => element.id == action.payload.id)
             state.notebooks[index] = action.payload
             return state
         },
         createNote: (state, action) => {
-            const index = state.notebooks.findIndex((element) => element.id == action.payload.id);
+            const index = state.notebooks.findIndex((element) => element.id == action.payload.id)
             state.notebooks[index] = action.payload
             return state
         },
         editNote: (state, action) => {
-            const index = state.notebooks.findIndex((element) => element.id == action.payload.id);
+            const index = state.notebooks.findIndex((element) => element.id == action.payload.id)
             state.notebooks[index] = action.payload
             return state
         }

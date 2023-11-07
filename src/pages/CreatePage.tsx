@@ -9,7 +9,7 @@ import { createNote } from '../store/slice'
 const CreatePage = () => {
 
     const [text, setText] = useState('')
-    const textareaRef = useRef()
+    const textareaRef = useRef<HTMLTextAreaElement>(null)
 
     const { notebookId } = useParams()
     const dispatch = useDispatch()
@@ -26,7 +26,6 @@ const CreatePage = () => {
 
     useEffect(() => {
         if (textareaRef.current) {
-            //@ts-ignore
           textareaRef.current.focus();
         }
       }, []); 
