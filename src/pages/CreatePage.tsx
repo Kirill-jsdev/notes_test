@@ -16,7 +16,6 @@ const CreatePage = () => {
     const navigate = useNavigate()
 
     const [notebook, setNotebook] = useState()
-
     const notebooks = useSelector(state => state.notebooks.notebooks)
 
     useEffect(() => {

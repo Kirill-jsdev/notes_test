@@ -9,7 +9,7 @@ const initialState = {
                 {
                     id: '01',
                     title: "Do some stuff at 10 am",
-                    content: 'Onsectetur adipiscing elit, sed do eiusmod '
+                    content: 'Hello'
                 }, 
                 {
                     id: '02',

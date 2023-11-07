@@ -1,11 +1,7 @@
 import {useRef, useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-
 import { editNote } from '../store/slice'
-
-
-
 
 const EditPage = () => {
 
@@ -30,10 +26,8 @@ const EditPage = () => {
             const newNotes = [...notebook.notes]
             newNotes[noteIndex] = note
             const editedNotebook = {...notebook, notes: [...newNotes]}
-            console.log(editedNotebook, 'AAA')
             dispatch(editNote(editedNotebook))
         }
-
 
         navigate(`/notes/${notebookId}`)
     }
