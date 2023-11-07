@@ -2,12 +2,13 @@ import {useRef, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {createNotebook, deleteNotebook} from '../store/slice'
 import { useNavigate } from 'react-router-dom'
+import { RootState } from '../store/store'
 
 const HomePage = () => {
+
     const navigate = useNavigate()
-
-    const notebooks = useSelector(state => state.notebooks.notebooks)
-
+    const dispatch = useDispatch()
+    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
@@ -15,8 +16,6 @@ const HomePage = () => {
             inputRef.current.focus();
         }
       }, []); 
-
-    const dispatch = useDispatch()
 
     const removeNotebook = (e: React.MouseEvent<HTMLElement>, notebookId: string) => {
         e.stopPropagation()
@@ -58,12 +57,9 @@ const HomePage = () => {
                             </button>
                         </div>
                     )
-                })}
-
-                
+                })}   
             </div>
         </div>
-
     )
 }
 

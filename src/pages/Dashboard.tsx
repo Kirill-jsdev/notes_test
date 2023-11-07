@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
+import { RootState } from '../store/store'
 
 
 const Dashboard = () => {
 
-    const notebooks = useSelector(state => state.notebooks.notebooks)
+    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
 
     const [stat, setStat] = useState()
 

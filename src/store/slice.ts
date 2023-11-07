@@ -27,7 +27,7 @@ export const notebooksSlice = createSlice({
     reducers: {
         createNotebook: (state, action) => {
             state.notebooks.push({
-                id: Math.random(), 
+                id: Math.random() + '', 
                 name: action.payload, 
                 notes: []
             })

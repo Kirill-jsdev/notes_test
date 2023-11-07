@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {deleteNote} from '../store/slice'
 import { useNavigate, useParams } from 'react-router-dom'
+import { RootState } from '../store/store'
 
 const NotesPage = () => {
 
@@ -9,7 +10,7 @@ const NotesPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [notebook, setNotebook] = useState()
-    const notebooks = useSelector(state => state.notebooks.notebooks)
+    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
 
     useEffect(() => {
       const nb = notebooks.filter(n => n.id == notebookId)[0]
