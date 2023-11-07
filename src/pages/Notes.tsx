@@ -3,13 +3,14 @@ import {useSelector, useDispatch} from 'react-redux'
 import {deleteNote} from '../store/slice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { RootState } from '../store/store'
+import { Notebook } from '../types/types'
 
 const NotesPage = () => {
 
     const {notebookId} = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [notebook, setNotebook] = useState()
+    const [notebook, setNotebook] = useState<Notebook | null>(null)
     const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const NotesPage = () => {
           <h1 className="mb-10 text-2xl font-bold text-center">{notebook ? notebook.name : 'Title'}</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {notebook?.notes.length > 0 ?
+            {notebook && notebook?.notes.length > 0 ?
               notebook.notes.map((note) => {
                 const truncatedTitle = note.title.length > 20 ? note.title.substring(0, 20) + '...' : note.title;
 
