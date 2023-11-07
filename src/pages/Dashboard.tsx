@@ -1,18 +1,23 @@
 import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import { RootState } from '../store/store'
+import { Note } from '../types/types'
 
+type Stat = {
+    allNotes: Note[]
+    avgLength: number
+    totalWords: number
+}
 
 const Dashboard = () => {
 
     const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
-
-    const [stat, setStat] = useState()
+    const [stat, setStat] = useState<Stat | null>(null)
 
     useEffect(() => {
 
-        const allNotes = [];
-        const lengths = []
+        const allNotes: Note[] = [];
+        const lengths: number[] = []
         let totalWords = 0
       
         for (const item of notebooks) {

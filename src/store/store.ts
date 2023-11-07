@@ -8,7 +8,6 @@ export const store = configureStore({
     }
 })
 
-// export type RootState2 = ReturnType<typeof store.getState>
 export type RootState = {
     notebooks: {
         notebooks: Notebook[]
