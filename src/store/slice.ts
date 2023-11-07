@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
     notebooks: [
         {
-            id: 1,
+            id: '1',
             name: 'Default',
             notes: [ 
                 {

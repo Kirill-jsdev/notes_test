@@ -3,20 +3,18 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { createNote } from '../store/slice'
-
-
+import { RootState } from '../store/store'
+import {Notebook} from '../types/types'
 
 const CreatePage = () => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     const textareaRef = useRef<HTMLTextAreaElement>(null)
-
     const { notebookId } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const [notebook, setNotebook] = useState()
-    const notebooks = useSelector(state => state.notebooks.notebooks)
+    const [notebook, setNotebook] = useState<Notebook | null>(null)
+    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
 
     useEffect(() => {
       const nb = notebooks.filter(n => n.id == notebookId)[0]
@@ -32,21 +30,18 @@ const CreatePage = () => {
     const addNote = (e: React.MouseEvent<HTMLElement>) => {
 
         e.preventDefault()
-
-        if (!notebook) return
-
+        if (!notebook || !inputRef.current?.value || !textareaRef.current?.value) return
 
         const note = {
             id: Math.random() + '', 
-            title: inputRef.current?.value || '', 
-            content: textareaRef.current?.value || ''
+            title: inputRef.current.value, 
+            content: textareaRef.current.value
         }
 
         const updatedNotes = [...notebook.notes, note]
         const updatedNotebook = { ...notebook, notes: updatedNotes }
         dispatch(createNote(updatedNotebook))
         navigate(`/notes/${notebookId}`)
-   
     }
 
     return (

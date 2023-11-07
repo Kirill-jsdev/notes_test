@@ -6,3 +6,5 @@ export const store = configureStore({
         notebooks: notebooksReducer
     }
 })
+
+export type RootState = ReturnType<typeof store.getState>

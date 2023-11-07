@@ -2,6 +2,8 @@ import {useRef, useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { editNote } from '../store/slice'
+import { Note } from '../types/types'
+import { RootState } from '../store/store'
 
 const EditPage = () => {
 
@@ -9,18 +11,21 @@ const EditPage = () => {
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [currentNote, setCurrentNote] = useState()
+    const [currentNote, setCurrentNote] = useState<Note | null>(null)
 
     const {notebookId, noteId} = useParams()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const notebooks = useSelector(state => state.notebooks.notebooks)
+    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
 
     const edit = () => {
-        if (currentNote) {
+        if (currentNote && notebookId) {
             const notebook = notebooks.find(n => n.id == notebookId)
+
+            if (!notebook || !title || !content) return
+
             const noteIndex = notebook.notes.findIndex(note => note.id == noteId)
             const note = {...currentNote, title, content}
             const newNotes = [...notebook.notes]
@@ -34,6 +39,9 @@ const EditPage = () => {
 
     useEffect(() => {
         const notebook = notebooks.find(n => n.id == notebookId)
+
+        if (!notebook) return
+
         const note = notebook.notes.find(note => note.id == noteId)
         setCurrentNote(note)
         setTitle(note.title)

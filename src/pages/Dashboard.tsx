@@ -17,17 +17,14 @@ const Dashboard = () => {
         for (const item of notebooks) {
           for (const n of item.notes) {
             allNotes.push(n);
-            lengths.push(n.title.length)
-            totalWords += n.title.split(' ').length
+            lengths.push(n.content.length)
+            totalWords += n.content.split(' ').length
           }
         }
 
-        const avgLength = lengths.reduce((acc, curr) => acc + curr, 0) / lengths.length
-
-
+        const avgLength = lengths.reduce((acc, curr) => acc + curr, 0) / lengths.length || 0
 
         setStat({allNotes, avgLength, totalWords})
-
 
     }, [])
 
