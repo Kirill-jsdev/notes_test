@@ -9,6 +9,9 @@ const Navbar = () => {
             </Link>
             <ul className="flex items-center text-white pr-4">
               <li>
+                <Link to='/search' className="text-lg font-semibold hover:underline ml-4">
+                  Search
+                </Link>
                 <Link to='/dashboard' className="text-lg font-semibold hover:underline ml-4">
                   Dashboard
                 </Link>

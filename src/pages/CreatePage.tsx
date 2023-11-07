@@ -15,7 +15,14 @@ const CreatePage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const notebook = useSelector(state => state.notebooks.notebooks.filter(n => n.id == notebookId))[0]
+    const [notebook, setNotebook] = useState()
+
+    const notebooks = useSelector(state => state.notebooks.notebooks)
+
+    useEffect(() => {
+      const nb = notebooks.filter(n => n.id == notebookId)[0]
+      setNotebook(nb)
+    }, [])
 
     useEffect(() => {
         if (textareaRef.current) {
@@ -28,18 +35,21 @@ const CreatePage = () => {
 
         e.preventDefault()
 
-        const note = {id: Math.random(), title: text}
 
-        const updatedNotes = [...notebook.notes, note]
-        const updatedNotebook = { ...notebook, notes: updatedNotes }
-        dispatch(createNote(updatedNotebook))
-        navigate(`/notes/${notebookId}`)
+        if (notebook) {
+            const note = {id: Math.random(), title: text}
+            const updatedNotes = [...notebook.notes, note]
+            const updatedNotebook = { ...notebook, notes: updatedNotes }
+            dispatch(createNote(updatedNotebook))
+            navigate(`/notes/${notebookId}`)
+        }
+
+        
     }
 
     const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const content = e.target.value
         setText(content)
-        console.log(content)
     }
 
 

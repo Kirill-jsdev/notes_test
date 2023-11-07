@@ -5,6 +5,8 @@ import CreatePage from './pages/CreatePage'
 import Dashboard from './pages/Dashboard'
 import RootLayout from './pages/RootLayout'
 import NotesPage from './pages/Notes'
+import SearchPage from './pages/SearchPage'
+import EditPage from './pages/EditPage'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +15,9 @@ const router = createBrowserRouter([
     children: [
       {path: '/', element: <HomePage />},
       {path: '/create/:notebookId', element: <CreatePage />},
+      {path: '/edit/:noteId', element: <EditPage />},
       {path: '/notes/:notebookId', element: <NotesPage />},
+      {path: '/search', element: <SearchPage />},
       {path: '/dashboard', element: <Dashboard />},
     ]
   },
