@@ -26,7 +26,7 @@ const EditPage = () => {
         
         if (currentNote) {
             const notebook = notebooks.find(n => n.id == notebookId)
-            const noteIndex = notebook.notes.findIndex(note => note.id === noteId)
+            const noteIndex = notebook.notes.findIndex(note => note.id == noteId)
             const note = {...currentNote, title: text}
             const newNotes = [...notebook.notes]
             newNotes[noteIndex] = note
