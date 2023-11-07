@@ -42,7 +42,7 @@ const EditPage = () => {
 
         if (!notebook) return
 
-        const note = notebook.notes.find(note => note.id == noteId)
+        const note = notebook.notes.find(note => note.id == noteId) as Note
         setCurrentNote(note)
         setTitle(note.title)
         setContent(note.content)
