@@ -1,10 +1,10 @@
 import {useState, useRef, useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { createNote } from '../store/slice'
-import { RootState } from '../store/store'
 import {Notebook} from '../types/types'
+import useNotebooks from '../hooks/useNotebooks'
 
 const CreatePage = () => {
 
@@ -14,7 +14,7 @@ const CreatePage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [notebook, setNotebook] = useState<Notebook | null>(null)
-    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
+    const notebooks = useNotebooks()
 
     useEffect(() => {
       const nb = notebooks.filter(n => n.id == notebookId)[0]

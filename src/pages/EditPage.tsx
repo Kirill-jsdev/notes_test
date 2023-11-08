@@ -1,9 +1,9 @@
 import {useRef, useState, useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { editNote } from '../store/slice'
 import { Note } from '../types/types'
-import { RootState } from '../store/store'
+import useNotebooks from '../hooks/useNotebooks'
 
 const EditPage = () => {
 
@@ -18,7 +18,7 @@ const EditPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
+    const notebooks = useNotebooks()
 
     const edit = () => {
         if (currentNote && notebookId) {

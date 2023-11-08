@@ -1,7 +1,6 @@
 import {useState, useEffect, useRef} from 'react'
-import {useSelector} from 'react-redux'
-import { RootState } from '../store/store'
 import { Note } from '../types/types'
+import useNotebooks from '../hooks/useNotebooks'
 
 type FilterBy = 'title' | 'content'
 
@@ -33,7 +32,7 @@ const SearchPage = () => {
     }, [])
 
 
-    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
+    const notebooks = useNotebooks()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value.toLowerCase()

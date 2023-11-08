@@ -1,14 +1,14 @@
 import {useRef, useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {createNotebook, deleteNotebook} from '../store/slice'
-import { useNavigate } from 'react-router-dom'
-import { RootState } from '../store/store'
+import {useNavigate} from 'react-router-dom'
+import useNotebooks from '../hooks/useNotebooks'
 
 const HomePage = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
+    const notebooks = useNotebooks()
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {

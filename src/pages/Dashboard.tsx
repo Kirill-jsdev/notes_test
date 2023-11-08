@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react'
-import {useSelector} from 'react-redux'
-import { RootState } from '../store/store'
 import { Note } from '../types/types'
+import useNotebooks from '../hooks/useNotebooks'
 
 type Stat = {
     allNotes: Note[]
@@ -11,7 +10,7 @@ type Stat = {
 
 const Dashboard = () => {
 
-    const notebooks = useSelector((state: RootState) => state.notebooks.notebooks)
+    const notebooks = useNotebooks()
     const [stat, setStat] = useState<Stat | null>(null)
 
     useEffect(() => {
