@@ -31,12 +31,11 @@ export const notebooksSlice = createSlice({
                 name: action.payload, 
                 notes: []
             })
+            return state
         },
         deleteNotebook: (state, action) => {
             const newNotebooks = state.notebooks.filter(n => n.id !== action.payload)
-            return {
-              notebooks: newNotebooks,
-            }
+            return {...state, notebooks: newNotebooks}
         },
         deleteNote: (state, action) => {
             const index = state.notebooks.findIndex((element) => element.id == action.payload.id)
