@@ -23,7 +23,7 @@ const HomePage = () => {
         dispatch(deleteNotebook(notebookId))
     }
 
-    const addNotebook = (e: React.MouseEvent<HTMLElement>) => {
+    const addNotebook = (e: React.FormEvent) => {
         e.stopPropagation()
         e.preventDefault()
         if (inputRef.current) {
@@ -38,13 +38,17 @@ const HomePage = () => {
         <div className="max-w-screen-xl mx-auto p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                <div className="border border-dashed border-4 p-4 bg-gray-100 rounded-lg flex justify-center cursor-pointer">
-                    <div className="flex items-center space-x-2 cursor-pointer">
-                        <label htmlFor="">Name:</label>
-                        <input className="px-1" ref={inputRef} type="text" />
-                        <button onClick={addNotebook} className="bg-blue-300 p-1 rounded-lg">New notebook</button>
+                <form onSubmit={addNotebook}>
+                    <div className="border border-dashed border-4 p-4 bg-gray-100 rounded-lg flex justify-center cursor-pointer">
+                        <div className="flex items-center space-x-2 cursor-pointer">
+                            <label htmlFor="notebookName">Name:</label>
+                            <input  id="notebookName" className="px-1" ref={inputRef} type="text" name="notebookName" />
+                            <button type="submit" className="bg-blue-300 p-1 rounded-lg">
+                                New notebook
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
 
 
                 {notebooks.map(n => {
