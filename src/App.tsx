@@ -6,11 +6,13 @@ import RootLayout from './pages/RootLayout'
 import NotesPage from './pages/Notes'
 import SearchPage from './pages/SearchPage'
 import EditPage from './pages/EditPage'
+import ErrorPage from './pages/ErrorPage'
 
 const router = createBrowserRouter([
   {
     path: '/', 
-    element: <RootLayout />,
+    element: <RootLayout />, 
+    errorElement: <ErrorPage />,
     children: [
       {path: '/', element: <HomePage />},
       {path: '/create/:notebookId', element: <CreatePage />},
