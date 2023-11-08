@@ -27,7 +27,7 @@ const CreatePage = () => {
         }
     }, []); 
 
-    const addNote = (e: React.MouseEvent<HTMLElement>) => {
+    const addNote = (e: React.FormEvent) => {
 
         e.preventDefault()
         if (!notebook || !inputRef.current?.value || !textareaRef.current?.value) return
@@ -46,7 +46,7 @@ const CreatePage = () => {
 
     return (
         <div className="w-full max-w-screen-sm mx-auto p-4">
-            <form className="bg-white p-6 rounded-lg shadow-md">
+            <form onSubmit={addNote} className="bg-white p-6 rounded-lg shadow-md">
 
                 <div className="mb-4">
                     <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title:</label>
@@ -59,7 +59,7 @@ const CreatePage = () => {
                 </div>
 
                 <div className="text-center">
-                    <button onClick={addNote} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
                         Create
                     </button>
                 </div>

@@ -20,7 +20,10 @@ const EditPage = () => {
 
     const notebooks = useNotebooks()
 
-    const edit = () => {
+    const handleSubmit = (e: React.FormEvent) => {
+
+        e.preventDefault()
+
         if (currentNote && notebookId) {
             const notebook = notebooks.find(n => n.id == notebookId)
 
@@ -66,7 +69,7 @@ const EditPage = () => {
 
     return (
         <div className="w-full max-w-screen-sm mx-auto p-4">
-            <form className="bg-white p-6 rounded-lg shadow-md">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
 
                 <div className="mb-4">
                     <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title:</label>
@@ -79,9 +82,9 @@ const EditPage = () => {
                 </div>
 
                 <div className="text-center">
-                    <div onClick={edit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer">
                         Save
-                    </div>
+                    </button>
                 </div>
             </form>
         </div>
